@@ -140,7 +140,7 @@ route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.203.0.1
 route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.203.0.5
 ```
 
-(D) (D) Tugas berikutnya adalah memberikan ip pada subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian kalian ingat bahwa kalian harus setting DHCP Relay pada router yang menghubungkannya.
+(D) Tugas berikutnya adalah memberikan ip pada subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian kalian ingat bahwa kalian harus setting DHCP Relay pada router yang menghubungkannya.
 
 1. Install `apt-get install isc-dhcp-relay -y` pada foosha, water7, dan guanhao, `apt-get install isc-dhcp-server` pada Jipangu. Jangan lupa start semuanya setelah proses instalasi selesai.
 2. Pada Router (foosha, water7 dan guanhao) Edit file ```/etc/sysctl.conf``` di line berikut :
