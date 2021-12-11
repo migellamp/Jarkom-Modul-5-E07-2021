@@ -254,9 +254,11 @@ Ping kepada IP Doriki
 ping 192.203.0.19
 ```
 - Blueno
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04C.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/04C-Fix.png) <br />
 - Chipper
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04C.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/04D-Fix.png) <br />
 
 ## Soal 05: Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya. Selain itu di reject.
 ### Pembahasan:
@@ -276,9 +278,11 @@ Ping kepada IP Doriki
 ping 192.203.0.19
 ```
 - Elena
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05A.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/05A-Fix.png) <br />
 - Fukoro
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05B.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/05B-Fix.png) <br />
 Kondisi tidak bisa akses ke Doriki, yakni pada Elena dan Fukuro atur date menjadi: hari Selasa, 7 Desember 2021 Pukul 07.00:
 ```
 date -s "7 DEC 2021 07:00:00"
@@ -288,9 +292,11 @@ Ping kepada IP Doriki
 ping 192.203.0.19
 ```
 - Elena
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05C.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/05C-Fix.png) <br />
 - Fukoro
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05C.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/05D-Fix.png) <br />
 
 ## Soal 06: Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate.
 ### Pembahasan:
@@ -317,6 +323,7 @@ apt-get install netcat -y
 3. Pada node Fukurou, tuliskan: ``` nc 192.203.0.25 80 ``` dgn 192.203.0.25 adalah IP Guanhao
 
 Hasil :
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/06A.png) <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/06B.png) <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/06C.png) <br />
+
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/06A-Fix.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/06B-Fix.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/06C-Fix.png) <br />
