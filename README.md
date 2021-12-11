@@ -230,10 +230,10 @@ iptables -t nat -A POSTROUTING -s 192.203.0.0/16 -o eth0 -j SNAT --to-s 192.168.
 ### Testing
 Lakukan Ping pada setiap node/host/servernya, berikut contoh jika melakukan ping di beberapa node :
 - Foosha  <br/>
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/1a.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/1a.jpg) <br />
 
 - Doriki <br/>
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/1b.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/1b.jpg) <br />
 
 ## Soal 02 : Kalian diminta untuk mendrop semua akses HTTP dari luar Topologi kalian pada server yang merupakan DHCP Server dan DNS Server demi menjaga keamanan.
 
@@ -252,7 +252,7 @@ yang mana ```192.203.0.16/29``` dapat dilihat dengan melakukan ```ip a``` pada D
 4. kalau sudah nmap -p 80 192.209.0.?
 
 - Output <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/2a.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/2a.jpg) <br />
 
 
 ## Soal 03 : Membatasi DHCP dan DNS Server hanya boleh menerima maksimal 3 koneksi ICMP secara bersamaan menggunakan iptables, selebihnya didrop.
@@ -270,16 +270,16 @@ iptables -A INPUT -p icmp -m connlimit --connlimit-above 3 --connlimit-mask 0 -j
 3. Setelah dijalankan, maka untuk proses tersting, ping DORIKI ke 4 node yang berbeda dan nanti yg keempat akan gagal untuk ping. Dengan ping 192.203.0.19
 
 - Water7 <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3a.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3a.jpg) <br />
 
 - Foosha <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3b.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3b.jpg) <br />
 
 - Guanhao <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3c.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3c.jpg) <br />
 
 - Elena(300Host) <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3d.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/3d.jpg) <br />
 
 ## Soal 04: Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
 
