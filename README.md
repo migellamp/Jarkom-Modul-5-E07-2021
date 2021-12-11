@@ -11,8 +11,8 @@ Laporan Resmi Soal Shift Jarkom Modul 5
 ![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/tree.png) <br />
 
 ## Pembagian IP : 
-| Subnet | Jumlah | IP | Netmask | subnetmask |	nid |
-| ------ | ------ | -- | ------- | ---------- | --- |
+| Subnet | Jumlah | Netmask | subnetmask |	nid |
+| ------ | ------ | ------- | ---------- | --- |
 | A1 | 2 | /30 |	255.255.255.252 |	192.203.0.0 |
 | A2 | 2 | /30 |	255.255.255.252 |	192.203.0.4 |
 | A7 | 4 | /29 |	255.255.255.248 |	192.203.0.16 |
