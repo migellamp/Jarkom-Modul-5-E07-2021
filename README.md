@@ -115,7 +115,7 @@ iface eth0 inet static
 	netmask 255.255.255.248
 	gateway 192.203.0.25
 ```
-**Pada masing-masing host/router, setting ke dhcp**
+**Pada masing-masing host/clients, setting interface eth0 untuk dhcp**
 ```
 auto eth0
 iface eth0 inet dhcp
