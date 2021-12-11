@@ -216,6 +216,7 @@ subnet 192.203.0.16 netmask 255.255.255.248{
 7. Restart dhcp server.
 8. Restart masing-masing client. Lalu cek ip masing-masing dengan command `ip a`. Tes dengan cara ping ke salah satu server/client lain, atau ping ke google.
 
+
 ## Kemudian kalian diminta untuk membatasi akses ke Doriki yang berasal dari subnet Blueno, Cipher, Elena dan Fukuro dengan beraturan sebagai berikut
 ## Soal 04: Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
 
