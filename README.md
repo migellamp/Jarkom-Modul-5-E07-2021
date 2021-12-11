@@ -240,7 +240,8 @@ Ping kepada IP Doriki
 ping 192.203.0.19
 ```
 - Blueno
-![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04A-Fix.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/blob/main/Screenshot/04A-Fix.png) <br />
+<!-- ![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04A-Fix.png) <br /> -->
 - Chipper
 ![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04B.png) <br />
 Kondisi tidak bisa akses ke Doriki, yakni pada Blueno dan Chipper atur date menjadi: hari Selasa, 7 Desember 2021 Pukul 20.00:
