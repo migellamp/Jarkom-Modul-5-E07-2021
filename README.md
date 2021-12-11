@@ -215,3 +215,105 @@ subnet 192.203.0.16 netmask 255.255.255.248{
 ```
 7. Restart dhcp server.
 8. Restart masing-masing client. Lalu cek ip masing-masing dengan command `ip a`. Tes dengan cara ping ke salah satu server/client lain, atau ping ke google.
+
+## Kemudian kalian diminta untuk membatasi akses ke Doriki yang berasal dari subnet Blueno, Cipher, Elena dan Fukuro dengan beraturan sebagai berikut
+## Soal 04: Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.
+
+### Pembahasan:
+
+Pada node Doriki jalankan script berikut, dgn catatan ```192.203.0.128/25``` adalah IP Blueno dan ```192.203.4.0/22``` adalah IP Chipher:
+```
+iptables -A INPUT -s 192.203.0.128/25 -m time --timestart 07:00 --timestop 17:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
+iptables -A INPUT -s 192.203.4.0/22 -m time --timestart 07:00 --timestop 17:00 --weekdays Mon,Tue,Wed,Thu -j ACCEPT
+iptables -A INPUT -s 192.203.0.128/25 -j REJECT
+iptables -A INPUT -s 192.203.4.0/22 -j REJECT
+```
+
+### Testing
+Kondisi bisa akses ke Doriki, yakni pada Blueno dan Chipper atur data menjadi: hari Selasa, 7 Desember 2021 Pukul 09.00:
+```
+date -s "7 DEC 2021 09:00:00"
+```
+Ping kepada IP Doriki
+```
+ping 192.203.0.19
+```
+- Blueno
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04A.png) <br />
+- Chipper
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04B.png) <br />
+Kondisi tidak bisa akses ke Doriki, yakni pada Blueno dan Chipper atur date menjadi: hari Selasa, 7 Desember 2021 Pukul 20.00:
+```
+date -s "7 DEC 2021 20:00:00"
+```
+Ping kepada IP Doriki
+```
+ping 192.203.0.19
+```
+- Blueno
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04C.png) <br />
+- Chipper
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/04C.png) <br />
+
+## Soal 05: Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya. Selain itu di reject.
+### Pembahasan:
+
+Pada node Doriki jalankan script berikut, dgn catatan ```192.203.2.0/23``` adalah IP Elena dan ```192.203.1.0/24``` adalah IP Fukoro:
+```
+iptables -A INPUT -s 192.203.2.0/23 -m time --timestart 07:00 --timestop 15:00 -j REJECT
+iptables -A INPUT -s 192.203.1.0/24 -m time --timestart 07:00 --timestop 15:00 -j REJECT
+```
+### Testing
+Kondisi bisa akses ke Doriki, yakni pada Elena dan Fukuro atur date menjadi: hari Selasa, 7 Desember 2021 Pukul 15:01:
+```
+date -s "7 DEC 2021 15:01:00"
+```
+Ping kepada IP Doriki
+```
+ping 192.203.0.19
+```
+- Elena
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05A.png) <br />
+- Fukoro
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05B.png) <br />
+Kondisi tidak bisa akses ke Doriki, yakni pada Elena dan Fukuro atur date menjadi: hari Selasa, 7 Desember 2021 Pukul 07.00:
+```
+date -s "7 DEC 2021 07:00:00"
+```
+Ping kepada IP Doriki
+```
+ping 192.203.0.19
+```
+- Elena
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05C.png) <br />
+- Fukoro
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/05C.png) <br />
+
+## Soal 06: Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate.
+### Pembahasan:
+Pada Guanhao, lakukan script berikut:
+```
+iptables -A PREROUTING -t nat -p tcp -d 192.203.0.25 --dport 80 -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination 192.203.0.26:80
+iptables -A PREROUTING -t nat -p tcp -d 192.203.0.25 --dport 80 -j DNAT --to-destination 192.203.0.27:80
+iptables -t nat -A POSTROUTING -p tcp -d 192.203.0.26 --dport 80 -j SNAT --to-source 192.203.0.25
+iptables -t nat -A POSTROUTING -p tcp -d 192.203.0.27 --dport 80 -j SNAT --to-source 192.203.0.25
+```
+dengan catatan:
+```
+192.203.0.25 -> IP Guanhao
+192.203.0.26 -> IP Jorge
+192.203.0.27 -> IP Maingate
+```
+### Testing
+1. Pada node Guanhao, Maingate, Jorge, dan Fukurou install netcat dengan command : 
+```
+apt-get update
+apt-get install netcat -y
+```
+2. Pada node Maingate dan Jorge gunakan command : ``` nc -l -p 80 ```
+3. Pada node Fukurou, tuliskan: ``` nc 192.203.0.25 80 ``` dgn 192.203.0.25 adalah IP Guanhao
+
+Hasil :
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/06A.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/06B.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-5-E07-2021/tree/main/Screenshot/06C.png) <br />
