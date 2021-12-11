@@ -143,17 +143,37 @@ route add -net 0.0.0.0 netmask 0.0.0.0 gw 192.203.0.5
 (D) Tugas berikutnya adalah memberikan ip pada subnet Blueno, Cipher, Fukurou, dan Elena secara dinamis menggunakan bantuan DHCP server. Kemudian kalian ingat bahwa kalian harus setting DHCP Relay pada router yang menghubungkannya.
 
 1. Install `apt-get install isc-dhcp-relay -y` pada foosha, water7, dan guanhao, `apt-get install isc-dhcp-server` pada Jipangu. Jangan lupa start semuanya setelah proses instalasi selesai.
-2. Pada Router (foosha, water7 dan guanhao) Edit file ```/etc/sysctl.conf``` di line berikut :
+2. Install bind9 pada DNS Server DORIKI. Lalu konfigurasikan forwarder menuju ke `192.168.122.1` dengan meng-edit file `nano /etc/bind/named.conf.options`
+```
+apt-get update
+apt-get install bind9 -y
+```
+```
+options {
+        directory "/var/cache/bind";
+
+        forwarders{
+                192.168.122.1;
+        };
+
+        //dnssec-validation auto;
+        allow-query{any;};
+
+        auth-nxdomain no;     # conform to RFC1035
+        listen-on-v6 { any; };
+};
+```
+3. Pada Router (foosha, water7 dan guanhao) Edit file ```/etc/sysctl.conf``` di line berikut :
 ```
 net.ipv4.ip_forward=1
 net.ipv4.conf.all.accept_source_route = 1
 ```
-3. Buka file `nano /etc/default/isc-dhcp-relay` dan edit server dengan mengarahkan dchp-relay menuju Jipangu(192.203.0.18) lalu `service isc-dhcp-relay restart` pada foosha, water7, dan guanhao
-4. Pada Jipangu edit file `nano /etc/default/isc-dhcp-server` dengan menambahkan:
+4. Buka file `nano /etc/default/isc-dhcp-relay` dan edit server dengan mengarahkan dchp-relay menuju Jipangu(192.203.0.18) lalu `service isc-dhcp-relay restart` pada foosha, water7, dan guanhao
+5. Pada Jipangu edit file `nano /etc/default/isc-dhcp-server` dengan menambahkan:
 ```
 INTERFACES="eth0"
 ```
-5. Pada dhcp-server(Jipangu) isikan data pada `nano /etc/dhcp/dhcpd.conf` di line paling bawah yang kosong :
+6. Pada dhcp-server(Jipangu) isikan data pada `nano /etc/dhcp/dhcpd.conf` di line paling bawah yang kosong :
 ```
 subnet 192.203.1.0 netmask 255.255.255.0 {
 	range 192.203.1.2 192.203.1.255;
@@ -193,5 +213,5 @@ subnet 192.203.0.16 netmask 255.255.255.248{
         max-lease-time 7200;
 }
 ```
-6. Restart dhcp server.
-7. Resatrt masing-masing client. Lalu cek ip masing-masing dengan command `ip a`.
+7. Restart dhcp server.
+8. Restart masing-masing client. Lalu cek ip masing-masing dengan command `ip a`.
